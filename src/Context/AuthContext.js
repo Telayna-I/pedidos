@@ -17,15 +17,16 @@ const AuthContextProvider = ({ children }) =>{
 
     const [error, setError] = useState()
 
-    const [anoto, setAnoto] = useState(null)
+    const [anoto, setAnoto] = useState(JSON.parse(sessionStorage.getItem("vendedor")) || null);
 
     useEffect(()=>{
         if(loged === true || loged === 'loged'){
             setLoged(true);
             window.sessionStorage.setItem("loged", JSON.stringify(loged))
-            window.sessionStorage.setItem("Vendedor", JSON.stringify(anoto))
+            console.log(anoto)
+            window.sessionStorage.setItem("vendedor", JSON.stringify(anoto))
         }
-    },[loged, anoto])
+    },[loged])
 
     const logIn = (email,password)=>{
         signInWithEmailAndPassword(auth, email, password).then((response)=>{

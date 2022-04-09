@@ -122,3 +122,14 @@
     transition: background 0s;
 }
 
+.date{
+    width: 16px;
+}
+
+.ultimo{
+    width: 249.98px;
+}
+
+textarea{
+    width: 100%;
+}
