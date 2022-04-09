@@ -19,7 +19,7 @@ function App() {
 
                             <Route>
                                 <Route element = {<PublicRoutes />} >
-                                    <Route path = '/seguimiento' />
+                                    <Route path = '/follow-up' />
                                     <Route path = '/login' element = {<LogIn/>}/>
                                 </Route>
                             </Route>
