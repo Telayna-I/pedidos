@@ -28,47 +28,45 @@ const LogIn = () => {
     return(
         <div className = 'main'>
             <h2 className ='h2-login'>Inicia Sesion</h2>
-            <div className = "log-in-container">
-                <form className='form-login' onSubmit ={handleSubmit(onLogIn)}>
-                    <div className = 'campo radius-t arriba'>
-                        <FaEnvelope/>
-                        <input className='input-form radius-t' type = 'text'
-                        autoComplete = 'on'
-                        placeholder = 'Email'
-                        name='email'
-                        {...register('email', {
-                            required:{
-                                value: true,
-                                message: 'El campo email es requerido',
-                            },
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                message: "El formato de email no es correcto"
-                            }
-                        })}
-                        />
-                    </div>
-                    <div className='campo radius-b'>
-                        <FaKey/>
-                        <input className='input-form radius-b' type = 'password'
-                        autoComplete = 'off'
-                        placeholder = 'Contraseña'
-                        name='password'
-                        {...register('password', {
-                            required:{
-                                value: true,
-                                message: 'El campo password es requerido',
-                            },
-                            minLength: {
-                                value: 8,
-                                message: "La contraseña debe tener al menos 8 caracteres"
-                            }
-                        })}
-                        />
-                    </div>
-                    <button type="submit" value="submit" className = 'button-submit'> Iniciar Sesión</button>
-                </form>
-            </div>
+            <form className='form-login' onSubmit ={handleSubmit(onLogIn)}>
+                <div className = 'campo radius-t arriba'>
+                    <FaEnvelope/>
+                    <input className='input-form radius-t' type = 'text'
+                    autoComplete = 'on'
+                    placeholder = 'Email'
+                    name='email'
+                    {...register('email', {
+                        required:{
+                            value: true,
+                            message: 'El campo email es requerido',
+                        },
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                            message: "El formato de email no es correcto"
+                        }
+                    })}
+                    />
+                </div>
+                <div className='campo radius-b'>
+                    <FaKey/>
+                    <input className='input-form radius-b' type = 'password'
+                    autoComplete = 'off'
+                    placeholder = 'Contraseña'
+                    name='password'
+                    {...register('password', {
+                        required:{
+                            value: true,
+                            message: 'El campo password es requerido',
+                        },
+                        minLength: {
+                            value: 8,
+                            message: "La contraseña debe tener al menos 8 caracteres"
+                        }
+                    })}
+                    />
+                </div>
+                <button type="submit" value="submit" className = 'button-submit'> Iniciar Sesión</button>
+            </form>
             <div className='messages'>
                 <div className='message'>
                     {errors.email && <span className='error-message'>{errors.email.message}</span>}
