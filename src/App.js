@@ -7,6 +7,8 @@ import CreateOreder from './Components/CreateOrder/CreateOrder';
 import OrderContextProvider from './Context/OrderContext';
 import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes';
 import PublicRoutes from './Components/PublicRoutes/PublicRoutes';
+import FollowUp from './Components/FollowUp/FollowUp';
+import Board from './Components/Board/Board';
 
 function App() {
     return(
@@ -19,14 +21,15 @@ function App() {
 
                             <Route>
                                 <Route element = {<PublicRoutes />} >
-                                    <Route path = '/follow-up' />
+                                    <Route path = '/follow-up' element = {<FollowUp/>} />
                                     <Route path = '/login' element = {<LogIn/>}/>
                                 </Route>
                             </Route>
 
                             <Route>
                                 <Route element = {<PrivateRoutes />} >
-                                    <Route path = '/pedido' element = {<CreateOreder/>}/>
+                                    <Route path = '/create-order' element = {<CreateOreder/>}/>
+                                    <Route path = '/board' element = {<Board/>}/>
                                     <Route path = '/' />
                                 </Route>
                             </Route>

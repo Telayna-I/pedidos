@@ -6,7 +6,7 @@ const PrivateRoutes = () => {
 
     const { loged } = useAuth();
 
-    return loged ? <Outlet/> : <LogIn></LogIn>
+    return loged ? <Outlet/> : <LogIn/>
 
 
 }

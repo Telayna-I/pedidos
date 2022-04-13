@@ -29,7 +29,7 @@ const NavBar = () => {
 
     return(
         <header>
-            <NavLink to = {`/`} className = "logo">La Repostera</NavLink>
+            <NavLink to = {`/login`} className = "logo">La Repostera</NavLink>
             <nav ref={navRef}>
                 { loged === true &&
                 <NavLink className = {"nav-link"} onClick={showNavBar}
@@ -39,20 +39,27 @@ const NavBar = () => {
                 }
                 { loged === true &&
                 <NavLink className = {"nav-link"} onClick={showNavBar}
-                to = {`/tablero`} 
+                to = {`/board`} 
                 >Tablero
                 </NavLink>
                 }
                 {!loged && 
                 <NavLink className = {"nav-link"}
-                to = {`/seguimiento`} onClick={showNavBar}
+                to = {`/follow-up`} onClick={showNavBar}
                 >Seguimiento
+                </NavLink>
+                }
+
+                {loged && 
+                <NavLink className = {"nav-link"}
+                to = {`/create-order`} onClick={showNavBar}
+                >Generar pedido
                 </NavLink>
                 }
                 
                 
                 {loged && 
-                <div className={"log-out"} onClick={signOut} >Logout</div>}
+                <div className={"nav-link"} onClick={signOut} >Logout</div>}
                 <button className='nav-btn nav-close-btn' onClick={showNavBar} > <MdOutlineClose/> </button>
             </nav>
             <button className='nav-btn' onClick={showNavBar} > <FaBars/> </button>

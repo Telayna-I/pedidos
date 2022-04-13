@@ -21,7 +21,7 @@ const LogIn = () => {
     }
 
     useEffect(()=>{
-        loged && navigate('/')
+        loged && navigate('/board')
     },[loged,navigate])
 
 
@@ -66,7 +66,7 @@ const LogIn = () => {
                         })}
                         />
                     </div>
-                <button type="submit" value="submit" className = 'button-submit'> Iniciar Sesión</button>
+                    <button type="submit" value="submit" className = 'button-submit'> Iniciar Sesión</button>
                 </form>
             </div>
             <div className='messages'>

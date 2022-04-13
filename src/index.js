@@ -11,4 +11,3 @@ createRoot(
     <App/>
   </React.StrictMode>
 );
-

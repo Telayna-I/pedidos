@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { addDoc, collection,  Timestamp  } from 'firebase/firestore'
+import { addDoc, collection,  Timestamp, getDocs  } from 'firebase/firestore'
 import { dataBase } from "../Services/Firebase/firebase";
 
 
@@ -19,7 +19,19 @@ const OrderContextProvider = ( { children } ) => {
 
 
     
-
+    const listOrders = () => {
+        return new Promise((resolve, reject)=>{
+            const collectionRef = collection(dataBase, 'orders');
+            getDocs(collectionRef).then(response => {
+                const pedidos = response.docs.map(doc => {
+                    return { id : doc.id, ...doc.data() }
+                })
+                resolve(pedidos);
+            }).catch((err)=>{
+                reject(err)
+            })
+        })
+    }
 
 
 
@@ -39,10 +51,11 @@ const OrderContextProvider = ( { children } ) => {
                 telefono: data.phone,
                 senia: data.senia,
                 fecha: data.date,
+                hora: data.hora,
                 notas: data.notas,
-                estado: false,
                 date: Timestamp.fromDate(new Date()).toDate().toString()
             },
+            estado: false,
             vendedor: JSON.parse(sessionStorage.getItem("vendedor")),
         }
         
@@ -58,6 +71,10 @@ const OrderContextProvider = ( { children } ) => {
         generateOrder()
     }
 
+    const modificar = () => {
+        
+    }
+
 
 
 
@@ -68,7 +85,7 @@ const OrderContextProvider = ( { children } ) => {
 
 
     return (
-        <OrderContext.Provider value = {{ confirmOrder, idPedido }}>
+        <OrderContext.Provider value = {{ confirmOrder, idPedido, listOrders }}>
             { children }
         </OrderContext.Provider>
     );

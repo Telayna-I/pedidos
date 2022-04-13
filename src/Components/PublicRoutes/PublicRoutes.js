@@ -1,11 +1,12 @@
 import { useAuth } from "../../Context/AuthContext"
 import { Outlet } from "react-router-dom"
+import Board from "../Board/Board";
 
 const PublicRoutes = () => {
     
     const { loged } = useAuth();
 
-    return !loged && <Outlet/>
+    return !loged ? <Outlet/> : <Board/>
 
 }
 

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from "react-router-dom";
-import { FaPhoneAlt, FaCalendarAlt, FaRegMoneyBillAlt, FaBalanceScale, FaShoppingCart } from "react-icons/fa";
+import { FaPhoneAlt, FaCalendarAlt, FaRegMoneyBillAlt, FaBalanceScale, FaShoppingCart, FaClock} from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { MdDangerous } from "react-icons/md";
 import { useOrder } from '../../Context/OrderContext';
@@ -11,12 +11,16 @@ const CreateOreder = () => {
 
     const {register, formState :{ errors } , handleSubmit} = useForm();
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
 
     
     const encargar = async (data) => {
         try{
             await confirmOrder(data)
+            
+            navigate('/board')
+            
         }catch(err){
             console.log(err)
         }
@@ -108,10 +112,6 @@ const CreateOreder = () => {
                         placeholder = 'Seña'
                         name='senia'
                         {...register('senia', {
-                            minLength:{
-                                value: 1,
-                                message: 'Introduce una seña valida'
-                            },
                             pattern: {
                                 value:  /^[0-9]*(\.?)[ 0-9]+$/,
                                 message: "La seña debe ser expresada solo en numeros"
@@ -131,6 +131,23 @@ const CreateOreder = () => {
                             minLength: {
                                 value: 10,
                                 message: "Ingresa una fecha valida"
+                            }
+                        })}/>
+                    </div>
+                    <div className = 'campo  arriba'>
+                        <FaClock/>
+                        <input className='input-form radius-t' type = 'text'
+                        autoComplete = 'off'
+                        placeholder = 'Hora'
+                        name='hora'
+                        {...register('hora', {
+                            required:{
+                                value: true,
+                                message: 'El campo hora es requerido',
+                            },
+                            pattern: {
+                                value:  /^[0-9]*(\.?)[ 0-9]+$/,
+                                message: "La hora debe ser expresada solo en numeros"
                             }
                         })}/>
                     </div>
@@ -196,6 +213,12 @@ const CreateOreder = () => {
                     {errors.notas && <span className='error-message'>{errors.notas.message}</span>}
                     <div className = 'caja-boton'>
                         {errors.notas && <MdDangerous className='icon-error'/>}
+                    </div>
+                </div>
+                <div className='message'>
+                    {errors.hora && <span className='error-message'>{errors.hora.message}</span>}
+                    <div className = 'caja-boton'>
+                        {errors.hora && <MdDangerous className='icon-error'/>}
                     </div>
                 </div>
             </div>
