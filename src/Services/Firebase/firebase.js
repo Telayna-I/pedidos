@@ -2,15 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 
-
 const firebaseConfig = {
-    apiKey: "AIzaSyAh73FZTq1308yR6zco8hkcw4J2_9UD5Gc",
-    authDomain: "pedidos-85d11.firebaseapp.com",
-    projectId: "pedidos-85d11",
-    storageBucket: "pedidos-85d11.appspot.com",
-    messagingSenderId: "165729084789",
-    appId: "1:165729084789:web:e7fc83935f1abc31259f3c"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId
 };
+
 
 const app = initializeApp(firebaseConfig);
 
