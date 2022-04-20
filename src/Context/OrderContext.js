@@ -26,7 +26,13 @@ const OrderContextProvider = ( { children } ) => {
                 const pedidos = response.docs.map(doc => {
                     return { id : doc.id, ...doc.data() }
                 })
-                resolve(pedidos);
+                // if(pedidos.length === 1){
+                //     resolve(pedidos);
+                // }else{
+                // }
+                const pedidosOrdenados = pedidos.sort((a, b) => new Date(a.order.fecha).getTime() - new Date(b.order.fecha).getTime());
+                resolve(pedidosOrdenados)
+
             }).catch((err)=>{
                 reject(err)
             })

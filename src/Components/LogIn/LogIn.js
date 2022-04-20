@@ -18,11 +18,12 @@ const LogIn = () => {
         }catch(err){
             console.log(err.message)
         }
+        loged && navigate('/board')
     }
 
     useEffect(()=>{
         loged && navigate('/board')
-    },[loged,navigate])
+    },[loged])
 
 
     return(

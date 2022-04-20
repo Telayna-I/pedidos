@@ -7,7 +7,7 @@ import { writeBatch, getDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useForm } from 'react-hook-form'
 import { FaPhoneAlt, FaCalendarAlt, FaRegMoneyBillAlt, FaBalanceScale, FaShoppingCart, FaClock} from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-import { MdDangerous } from "react-icons/md";
+import { MdDangerous, MdContentCopy } from "react-icons/md";
 
 
 const Order = ( { ...order } ) => {
@@ -294,6 +294,7 @@ const Order = ( { ...order } ) => {
                 {pedido.order.senia !== '' && <p className='senia'><span>Seña:</span> $ {pedido.order.senia}</p>}
                 <p className='hora'><span>Hora:</span> {pedido.order.hora}</p>
                 <p className='vendedor'><span>Vendedor:</span> {pedido.vendedor}</p>
+                <p className='hora'><span>Codigo de seguimiento:</span> {pedido.id}</p>
                 <div className='notas-container'>
                     <p className='notas'><span>Notas:</span> {pedido.order.notas}</p>
                 </div>
