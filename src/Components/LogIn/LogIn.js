@@ -18,12 +18,8 @@ const LogIn = () => {
         }catch(err){
             console.log(err.message)
         }
-        loged && navigate('/board')
+        navigate('/board')
     }
-
-    useEffect(()=>{
-        loged && navigate('/board')
-    },[loged])
 
 
     return(

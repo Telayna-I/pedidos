@@ -59,7 +59,7 @@ const NavBar = () => {
                 
                 
                 {loged && 
-                <div className={"nav-link"} onClick={signOut} >Logout</div>}
+                <div className={"nav-link"} onClick={signOut} >Cerrar sesion</div>}
                 <button className='nav-btn nav-close-btn' onClick={showNavBar} > <MdOutlineClose/> </button>
             </nav>
             <button className='nav-btn' onClick={showNavBar} > <FaBars/> </button>

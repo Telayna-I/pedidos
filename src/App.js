@@ -29,8 +29,8 @@ function App() {
                             <Route>
                                 <Route element = {<PrivateRoutes />} >
                                     <Route path = '/create-order' element = {<CreateOreder/>}/>
-                                    <Route path = '/board' element = {<Board/>}/>
                                     <Route path = '/' />
+                                    <Route path = '/board' element = {<Board/>}/>
                                 </Route>
                             </Route>
 
