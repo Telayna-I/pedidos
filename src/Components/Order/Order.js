@@ -293,6 +293,7 @@ const Order = ( { ...order } ) => {
                 {pedido.order.kilos !== '' && <p className='kilos'><span>Kilos:</span> {pedido.order.kilos}Kg.</p>}
                 {pedido.order.senia !== '' && <p className='senia'><span>Seña:</span> $ {pedido.order.senia}</p>}
                 <p className='hora'><span>Hora:</span> {pedido.order.hora}</p>
+                <p className='hora'><span>Telefono:</span> {pedido.order.telefono}</p>
                 <p className='vendedor'><span>Vendedor:</span> {pedido.vendedor}</p>
                 <p className='hora'><span>Codigo de seguimiento:</span> {pedido.id}</p>
                 <div className='notas-container'>
