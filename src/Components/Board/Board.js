@@ -7,19 +7,22 @@ const Board = () => {
     
     const { listOrders } = useOrder()
 
+    const { estado } = useOrder()
     const [ pedidos, setPedidos] = useState([])
     const [processingOrder, setProcessingOrder] = useState(false)
+
 
     useEffect(()=>{
         setProcessingOrder(true)
         listOrders().then(response =>{
             setPedidos(response)
+            console.log(pedidos)
         }).catch((err)=>{
             console.log(err)
         }).finally(()=>{
             setProcessingOrder(false)
         })
-    },[])
+    },[estado])
 
     // console.log(orders.orders[0].nombre)
 

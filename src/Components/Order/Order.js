@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Order.css'
+import { useOrder } from '../../Context/OrderContext'
 import { FaEdit, FaCheckCircle } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
 import { dataBase } from '../../Services/Firebase/firebase';
@@ -11,7 +12,11 @@ import { MdDangerous, MdContentCopy } from "react-icons/md";
 
 
 const Order = ( { ...order } ) => {
+
+    const { setEstado, estado } = useOrder()
+
     const { pedido } = {...order}
+
 
     const batch = writeBatch(dataBase);
 
@@ -31,7 +36,7 @@ const Order = ( { ...order } ) => {
                 })
             }
             batch.commit().then(()=>{
-                window.location.reload(false);
+                setEstado(!estado)
             })
         }).catch((err)=>{
             console.log(err)
@@ -40,7 +45,7 @@ const Order = ( { ...order } ) => {
 
     const eliminar = async () => {
         await deleteDoc(doc(dataBase, "orders", pedido.id)).then(()=>{
-            window.location.reload(false);
+            setEstado(!estado)
         })
     }
 
@@ -63,7 +68,7 @@ const Order = ( { ...order } ) => {
                 },
             })
             batch.commit().then(()=>{
-                window.location.reload(false);
+                setEstado(!estado)
             })
         }).catch((err)=>{
             console.log(err)
